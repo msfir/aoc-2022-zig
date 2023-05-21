@@ -69,15 +69,15 @@ const Rucksack2 = struct {
         var thirdBits: u64 = 0;
         for (self.first) |item| {
             const pos = @intCast(u6, Self.priorityOf(item) - 1);
-            firstBits |= (@as(u64, 1) << pos);
+            firstBits |= @as(u64, 1) << pos;
         }
         for (self.second) |item| {
             const pos = @intCast(u6, Self.priorityOf(item) - 1);
-            secondBits |= (@as(u52, 1) << pos);
+            secondBits |= @as(u52, 1) << pos;
         }
         for (self.third) |item| {
             const pos = @intCast(u6, Self.priorityOf(item) - 1);
-            thirdBits |= (@as(u52, 1) << pos);
+            thirdBits |= @as(u52, 1) << pos;
         }
         var i: i32 = 0;
         const shares = firstBits & secondBits & thirdBits;
@@ -118,7 +118,7 @@ pub fn part2() !void {
     const reader = buf_reader.reader();
 
     const score = try part2SumOfPriorities(reader);
-    std.debug.print("Day 3 Part 1: {}\n", .{score});
+    std.debug.print("Day 3 Part 2: {}\n", .{score});
 }
 
 fn part1SumOfPriorities(reader: anytype) !i32 {
