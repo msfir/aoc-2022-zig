@@ -30,7 +30,7 @@ pub fn part1() !void {
     var buf_reader = std.io.bufferedReader(file.reader());
     const in_stream = buf_reader.reader();
 
-    const max = try part1_max_sum(in_stream);
+    const max = try part1MaxSum(in_stream);
     std.debug.print("Day 1 Part 1: {}\n", .{max});
 }
 
@@ -41,11 +41,11 @@ pub fn part2() !void {
     var buf_reader = std.io.bufferedReader(file.reader());
     const in_stream = buf_reader.reader();
 
-    const sum = try part2_top3_sum(in_stream);
+    const sum = try part2Top3Sum(in_stream);
     std.debug.print("Day 1 Part 2: {}\n", .{sum});
 }
 
-fn part1_max_sum(reader: anytype) !i32 {
+fn part1MaxSum(reader: anytype) !i32 {
     var buf: [10]u8 = undefined;
     var sum: i32 = 0;
     var max: i32 = 0;
@@ -65,7 +65,7 @@ fn part1_max_sum(reader: anytype) !i32 {
     return max;
 }
 
-fn part2_top3_sum(reader: anytype) !i32 {
+fn part2Top3Sum(reader: anytype) !i32 {
     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
     defer _ = gpa.deinit();
     const allocator = gpa.allocator();
@@ -93,11 +93,11 @@ fn part2_top3_sum(reader: anytype) !i32 {
 test "part1" {
     var fis = std.io.fixedBufferStream(test_input);
     const reader = fis.reader();
-    try testing.expectEqual(@as(i32, 24000), try part1_max_sum(reader));
+    try testing.expectEqual(@as(i32, 24000), try part1MaxSum(reader));
 }
 
 test "part2" {
     var fis = std.io.fixedBufferStream(test_input);
     const reader = fis.reader();
-    try testing.expectEqual(@as(i32, 45000), try part2_top3_sum(reader));
+    try testing.expectEqual(@as(i32, 45000), try part2Top3Sum(reader));
 }
