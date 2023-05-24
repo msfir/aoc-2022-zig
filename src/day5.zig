@@ -134,7 +134,6 @@ pub fn part1() !void {
     std.debug.print("Day 5 Part 1: {s}\n", .{result});
 }
 
-
 pub fn part2() !void {
     const allocator = std.heap.page_allocator;
     var file = try std.fs.cwd().openFile("src/input/day5.txt", .{});
@@ -147,7 +146,6 @@ pub fn part2() !void {
     defer allocator.free(result);
     std.debug.print("Day 5 Part 2: {s}\n", .{result});
 }
-
 
 fn part1PrintTopStacks(reader: anytype, allocator: std.mem.Allocator) ![]u8 {
     var buf = try reader.readAllAlloc(allocator, 1024 * 1024 * 1024);
